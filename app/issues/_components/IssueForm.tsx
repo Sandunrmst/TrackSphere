@@ -43,9 +43,11 @@ const IssueForm = ({ issue }: Props) => {
       if (issue) {
         await axios.patch("/api/issues/" + issue.id, data);
         router.push("/issues");
+        router.refresh(); // this tell to Next.js to refresh the current rout -> issue page(39.6 - Video)
       } else {
         await axios.post("/api/issues", data); //send data to issue api
         router.push("/issues"); //Navigate to issues page after form submition
+        router.refresh(); // this tell to Next.js to refresh the current rout -> issue page(39.6 - Video)
       }
     } catch (error) {
       setIsSubmitting(false); // set loading

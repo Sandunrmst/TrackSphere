@@ -54,4 +54,6 @@ const IssuesPage = async () => {
   );
 };
 
+export const dynamic = "force-dynamic"; // Enable dynamic rendering for fix chashing issues (39.6 Video)
+
 export default IssuesPage;
