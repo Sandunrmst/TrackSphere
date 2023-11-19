@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/prisma/migrations/client";
-import { createIssueSchema } from "../../validationSchemas";
+import { IssueSchema } from "../../validationSchemas";
 
 export async function POST(request: NextRequest){
     const body = await request.json();
-    const validation = createIssueSchema.safeParse(body)
+    const validation = IssueSchema.safeParse(body)
 
     //check validation help with zod
     if(!validation.success)
