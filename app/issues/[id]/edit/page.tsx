@@ -1,7 +1,12 @@
-import React from "react";
-import IssueForm from "../../_components/IssueForm";
 import prisma from "@/prisma/migrations/client";
 import { notFound } from "next/navigation";
+import dynamic from "next/dynamic";
+import IssueFormSkelton from "../../new/loading";
+
+const IssueForm = dynamic(() => import("@/app/issues/_components/IssueForm"), {
+  ssr: false,
+  loading: () => <IssueFormSkelton />,
+});
 
 interface Props {
   params: { id: string };
