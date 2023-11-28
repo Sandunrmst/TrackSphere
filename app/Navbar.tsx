@@ -5,8 +5,8 @@ import React from "react";
 import { usePathname } from "next/navigation";
 import { FaBug } from "react-icons/fa";
 import classNames from "classnames";
-import { link } from "fs";
-import { text } from "stream/consumers";
+import { useSession } from "next-auth/react";
+import { Box } from "@radix-ui/themes";
 
 const Links = [
   { name: "Dashboard", link: "/" },
@@ -15,7 +15,8 @@ const Links = [
 
 const Navbar = () => {
   const currentPath = usePathname();
-  console.log(currentPath);
+
+  const { status, data: session } = useSession();
 
   return (
     <nav className="flex space-x-5 border-b-2 h-14 pl-10 items-center">
@@ -38,6 +39,14 @@ const Navbar = () => {
           </li>
         ))}
       </ul>
+      <Box>
+        {status === "authenticated" && (
+          <Link href="/api/auth/signout"> Log out </Link>
+        )}
+        {status === "unauthenticated" && (
+          <Link href="/api/auth/signin"> Login </Link>
+        )}
+      </Box>
     </nav>
   );
 };
