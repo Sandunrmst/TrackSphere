@@ -6,7 +6,7 @@ import React from "react";
 const EditIssueButto = ({ issueId }: { issueId: number }) => {
   return (
     <Button>
-      <Link href={`/issues/${issueId}/edit`}>
+      <Link href={`/issues/edit/${issueId}`}>
         <p className="flex justify-center items-center gap-2">
           <Pencil2Icon /> Edit Issue
         </p>
