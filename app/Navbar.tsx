@@ -14,6 +14,8 @@ import {
   Flex,
   Text,
 } from "@radix-ui/themes";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Links = [
   { name: "Dashboard", link: "/" },
@@ -53,6 +55,7 @@ const Navbar = () => {
             </Box>
           </Flex>
           <Box>
+            {status === "loading" && <Skeleton width="3rem" />}
             {status === "authenticated" && (
               <DropdownMenu.Root>
                 <DropdownMenu.Trigger>
