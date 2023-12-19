@@ -1,3 +1,3 @@
 export default function Home() {
-  return <div>RMST</div>;
+  return <div>Issue Tracker</div>;
 }
